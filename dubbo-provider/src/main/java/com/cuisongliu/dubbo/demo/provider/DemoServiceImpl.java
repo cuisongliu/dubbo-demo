@@ -34,7 +34,12 @@ import java.util.Date;
  * @author cuisongliu [cuisongliu@qq.com]
  * @since 2018-10-09 下午3:33
  */
-@Service(timeout = 5000)
+@Service(
+        version = "${demo.service.version}",
+        application = "${dubbo.application.id}",
+        protocol = "${dubbo.protocol.id}",
+        registry = "${dubbo.registry.id}"
+)
 public class DemoServiceImpl implements DemoService {
     @Override
     public String sayHello(String name) {

@@ -23,21 +23,19 @@ package com.cuisongliu.dubbo.demo;
  * THE SOFTWARE.
  */
 
-import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
-import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 
 /**
  * @author cuisongliu [cuisongliu@qq.com]
  * @since 2018-10-09 下午3:56
  */
 @SpringBootApplication
-@DubboComponentScan(basePackages = "com.cuisongliu.dubbo.demo.provider")
-public class Startup  extends WebMvcConfigurationSupport {
+public class Startup  {
 
     public static void main(String[] args) {
-        SpringApplication.run(Startup.class, args);
+        new SpringApplicationBuilder(Startup.class).web(WebApplicationType.NONE).run(args);
     }
 
 }

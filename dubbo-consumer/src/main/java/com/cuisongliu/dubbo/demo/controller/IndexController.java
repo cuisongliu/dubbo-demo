@@ -23,6 +23,7 @@
  */
 package com.cuisongliu.dubbo.demo.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.cuisongliu.dubbo.demo.api.DemoService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,8 +36,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/")
 public class IndexController {
 
-    @com.alibaba.dubbo.config.annotation.Reference
-    public DemoService demoService;
+    @Reference(version = "${demo.service.version}",
+            application = "${dubbo.application.id}",
+            registry = "${dubbo.registry.id}")
+    private DemoService demoService;
 
     @RequestMapping("/")
     public String index(){
